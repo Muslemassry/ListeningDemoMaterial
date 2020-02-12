@@ -1,0 +1,47 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>  
+      <ion-title>SystemTests</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+    <form class="example-form">
+      <ion-grid>
+          <ion-row color="primary" justify-content-center>
+            <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+                <div text-center>
+                <h3>
+                  <mat-label>Add A test!</mat-label>
+                </h3>
+                </div>
+                  <div >
+                    <mat-form-field class="full-width-field">
+                      <input type="text" placeholder="Test name" aria-label="Number" matInput [formControl]="myControl" [(ngModel)]="testName">
+                    </mat-form-field>
+                </div>
+                <div padding>
+                  <button color='primary' class="full-width-field" mat-stroked-button (click)="addATest()" expand="block">
+                    <ion-icon name="add" slot="start"></ion-icon>
+                    Add
+                  </button>
+                </div>
+                <div>
+                  <div class="example-container">
+                    <h2>Tests</h2>
+                    <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
+                      <div class="example-box" *ngFor="let test of tests" cdkDrag (click)="updateTest(test)">{{test.testName}}</div>
+                    </div>
+                  </div>
+                </div>
+                <div padding>
+                  <button color='primary' class="full-width-field" mat-stroked-button (click)="save()" expand="block">Save</button>
+                </div>
+            </ion-col>
+          </ion-row>
+      </ion-grid>
+    </form>
+  </ion-content>
+  

@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>  
+    <ion-title>AddStudent</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <form  [formGroup]="form" (ngSubmit)="addStudent(form)">
+        <ion-grid>
+            <ion-row color="primary" justify-content-center>
+              <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+                  <div text-center>
+                  <h3>
+                    <mat-label>Student Details!</mat-label>
+                  </h3>
+                  </div>
+                  <div >
+                    <mat-form-field class="full-width-field">
+                      <input formControlName="name" type="text" placeholder="Name" matInput>
+                    </mat-form-field>
+                    </div>
+                    <div >
+                      <mat-form-field class="full-width-field">
+                          <input formControlName="email" type="email" placeholder="email@domain.com" matInput>
+                      </mat-form-field>
+                    </div>
+                    <div >
+                      <mat-form-field class="full-width-field">
+                          <input formControlName="password" type="password" placeholder="Password" matInput>
+                      </mat-form-field>
+                    </div>
+                    <div >
+                      <mat-form-field class="full-width-field">
+                          <input formControlName="confirm" type="password" placeholder="Password again" matInput>
+                      </mat-form-field>
+                    </div>
+                    <div padding>
+                    <button color='primary' class="full-width-field" mat-stroked-button type="submit" [disabled]="form.invalid" expand="block">Save</button>
+                  </div>
+              </ion-col>
+            </ion-row>
+        </ion-grid>
+    </form>
+  </ion-content>

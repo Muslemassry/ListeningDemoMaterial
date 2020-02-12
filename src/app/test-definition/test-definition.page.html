@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>  
+    <ion-title>Test: {{currentTestDefinition.testName}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form class="example-form">
+    <ion-grid>
+        <ion-row color="primary" justify-content-center>
+          <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+              <div text-center>
+              <h3>
+                <mat-label>Add A Step!</mat-label>
+              </h3>
+              </div>
+                <div >
+                  <mat-form-field class="full-width-field">
+                    <input type="text" placeholder="Step name" aria-label="Number" matInput [formControl]="myControl" [(ngModel)]="stepName">
+                  </mat-form-field>
+              </div>
+              <div padding>
+                <button color='primary' class="full-width-field" mat-stroked-button (click)="addAStep()" expand="block">
+                  <ion-icon name="add" slot="start"></ion-icon>
+                  Add
+                </button>
+              </div>
+              <div>
+                <div class="example-container">
+                  <h2>Steps</h2>
+                  <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
+                    <div class="example-box" *ngFor="let step of currentTestDefinition.testSteps" cdkDrag (click)="updateStep(step)">{{step.stepName}}</div>
+                  </div>
+                </div>
+              </div>
+              <div padding>
+                <button color='primary' class="full-width-field" mat-stroked-button (click)="assignChild()" expand="block">Assign Child</button>
+              </div>
+              <div padding>
+                <button color='primary' class="full-width-field" mat-stroked-button (click)="save()" expand="block">Save</button>
+              </div>
+          </ion-col>
+        </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>

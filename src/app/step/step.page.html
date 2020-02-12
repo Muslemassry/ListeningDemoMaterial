@@ -1,0 +1,91 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>  
+      <ion-title>step: {{step.stepName}}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+    <form class="example-form">
+      <ion-grid>
+          <ion-row color="primary" justify-content-center>
+            <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+                <mat-form-field class="full-width-field">
+                    <mat-label>Step type</mat-label>
+                    <mat-select [(value)]="stepType">
+                      <mat-option *ngFor="let type of types" [value]="type.value">
+                        {{type.viewValue}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+            </ion-col>
+          </ion-row>
+
+          <ion-row color="primary" justify-content-center>
+            <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+                <mat-checkbox [formControl]="disableTimeSelect">Timed</mat-checkbox>
+                <mat-form-field class="example-full-width">
+                  <input matInput [disabled]="!disableTimeSelect.value" placeholder="Time" [ngModelOptions]="{standalone: true}" [(ngModel)]="stepTime">
+                </mat-form-field>
+            </ion-col>
+          </ion-row>
+
+          <ion-row color="primary" justify-content-center>
+            <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+                <mat-form-field class="example-full-width">
+                  <input matInput placeholder="Step Answer" [ngModelOptions]="{standalone: true}" [(ngModel)]="stepAnswer">
+                </mat-form-field>
+            </ion-col>
+          </ion-row>
+
+          <ion-row color="primary" justify-content-center>
+              <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+                  <mat-checkbox [formControl]="disableRepeatableSelect">Repeatable</mat-checkbox>
+                  <mat-form-field class="example-full-width">
+                    <mat-label>Repeate type</mat-label>
+                    <mat-select [(value)]="repeateType" [disabled]="!disableRepeatableSelect.value">
+                      <mat-option *ngFor="let tempType of repeateTypes" [value]="tempType.value">
+                        {{tempType.viewValue}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+              </ion-col>
+            </ion-row>
+
+          <ion-row color="primary" justify-content-center>
+            <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+                <div text-center>
+                <h4>
+                  <mat-label>Add Image</mat-label>
+                </h4>
+                </div>
+                  <div >
+                    <mat-form-field class="full-width-field">
+                      <input type="text" placeholder="Image name" aria-label="Number" matInput [formControl]="myControl" [(ngModel)]="imageName">
+                    </mat-form-field>
+                </div>
+                <div padding>
+                  <button color='primary' class="full-width-field" mat-stroked-button (click)="addImage()" expand="block">
+                    <ion-icon name="add" slot="start"></ion-icon>
+                    Add
+                  </button>
+                </div>
+                <div>
+                  <div class="example-container">
+                    <h2>Images</h2>
+                    <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
+                      <mat-card class="example-box" *ngFor="let image of step.images" cdkDrag (click)="updateImage(image)">{{image.imageName}}</mat-card>
+                    </div>
+                  </div>
+                </div>
+                <div padding>
+                  <button color='primary' class="full-width-field" mat-stroked-button (click)="save()" expand="block">Save</button>
+                </div>
+            </ion-col>
+          </ion-row>
+      </ion-grid>
+    </form>
+  </ion-content>
+  

@@ -1,0 +1,88 @@
+
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>TestStep</ion-title>
+  </ion-toolbar>
+</ion-header>
+<div *ngIf="showModal">
+  <app-dialog [(visible)]="showModal">
+    <img [src]="modalImage" />
+  </app-dialog>
+</div>
+<ion-content *ngIf="!reloading" (loadNext)="onLoadNext()">
+  <div class="splash" *ngIf="showSpinner">
+    <app-loading-spinner></app-loading-spinner>
+  </div>
+    <div #dropBlock id="footer"></div>  
+      <ion-grid>
+          <ion-row color="primary" justify-content-center>
+            <ion-col align-self-center size-md="3" size-lg="5" size-xs="3">
+              <div #dragable1 [id]="testImages[0].src" *ngIf='testImages[0].display' class="example-box" cdkDragBoundary=".example-boundary" cdkDrag (cdkDragReleased)=released($event) [ngStyle]="setDragableStyles()" style="z-index: 999;">
+                <img [src]="testImages[0].src"/> 
+              </div>
+            </ion-col>
+            <ion-col align-self-center size-md="3" size-lg="5" size-xs="3">
+                <div #dragable2 [id]="testImages[1].src" *ngIf='testImages[1].display' class="example-box" cdkDragBoundary=".example-boundary" cdkDrag (cdkDragReleased)=released($event) [ngStyle]="setDragableStyles()" style="z-index: 998;">
+                    <img [src]="testImages[1].src" /> 
+                </div>
+              </ion-col>
+              <ion-col align-self-center size-md="3" size-lg="5" size-xs="3">
+                <div #dragable3 [id]="testImages[2].src" *ngIf='testImages[2].display' class="example-box" cdkDragBoundary=".example-boundary" cdkDrag (cdkDragReleased)=released($event) [ngStyle]="setDragableStyles()" style="z-index: 997;">
+                    <img [src]="testImages[2].src" /> 
+                </div>
+              </ion-col>
+              <ion-col align-self-center size-md="3" size-lg="5" size-xs="3">
+                <div #dragable4 [id]="testImages[3].src" *ngIf='testImages[3].display' class="example-box" cdkDragBoundary=".example-boundary" cdkDrag (cdkDragReleased)=released($event) [ngStyle]="setDragableStyles()" style="z-index: 996;">
+                    <img [src]="testImages[3].src" /> 
+                </div>
+              </ion-col>
+          </ion-row>
+          <ion-row color="primary" justify-content-center>
+              <ion-col align-self-center size-md="3" size-lg="5" size-xs="3">
+                <div #dragable5 [id]="testImages[4].src" *ngIf='testImages[4].display' class="example-box" cdkDragBoundary=".example-boundary" cdkDrag (cdkDragReleased)=released($event) [ngStyle]="setDragableStyles()" style="z-index: 995;">
+                    <img [src]="testImages[4].src" /> 
+                </div>
+              </ion-col>
+              <ion-col align-self-center size-md="3" size-lg="5" size-xs="3">
+                  <div #dragable6 [id]="testImages[5].src" *ngIf='testImages[5].display' class="example-box" cdkDragBoundary=".example-boundary" cdkDrag (cdkDragReleased)=released($event) [ngStyle]="setDragableStyles()" style="z-index: 994;">
+                      <img [src]="testImages[5].src" /> 
+                  </div>
+                </ion-col>
+                <ion-col align-self-center size-md="3" size-lg="5" size-xs="3">
+                  <div #dragable7 [id]="testImages[6].src" *ngIf='testImages[6].display' class="example-box" cdkDragBoundary=".example-boundary" cdkDrag (cdkDragReleased)=released($event) [ngStyle]="setDragableStyles()" style="z-index: 993;">
+                      <img [src]="testImages[6].src" /> 
+                  </div>
+                </ion-col>
+                <ion-col align-self-center size-md="3" size-lg="5" size-xs="3">
+                  <div #dragable8 [id]="testImages[7].src" *ngIf='testImages[7].display' class="example-box" cdkDragBoundary=".example-boundary" cdkDrag (cdkDragReleased)=released($event) [ngStyle]="setDragableStyles()" style="z-index: 992;">
+                      <img [src]="testImages[7].src" /> 
+                  </div>
+                </ion-col>
+            </ion-row>
+            <ion-row color="primary" justify-content-center>
+                <ion-col align-self-center size-md="3" size-lg="5" size-xs="3">
+                  <div #dragable9 [id]="testImages[8].src" *ngIf='testImages[8].display' class="example-box" cdkDragBoundary=".example-boundary" cdkDrag (cdkDragReleased)=released($event) [ngStyle]="setDragableStyles()" style="z-index: 991;">
+                      <img [src]="testImages[8].src" /> 
+                  </div>
+                </ion-col>
+                <ion-col align-self-center size-md="3" size-lg="5" size-xs="3">
+                    <div #dragable10 [id]="testImages[9].src" *ngIf='testImages[9].display' class="example-box" cdkDragBoundary=".example-boundary" cdkDrag (cdkDragReleased)=released($event) [ngStyle]="setDragableStyles()" style="z-index: 990;">
+                        <img [src]="testImages[9].src" /> 
+                    </div>
+                  </ion-col>
+                  <ion-col align-self-center size-md="3" size-lg="5" size-xs="3">
+                    <div #dragable11 [id]="testImages[10].src" *ngIf='testImages[10].display' class="example-box" cdkDragBoundary=".example-boundary" cdkDrag (cdkDragReleased)=released($event) [ngStyle]="setDragableStyles()" style="z-index: 989;">
+                        <img [src]="testImages[10].src" /> 
+                    </div>
+                  </ion-col>
+                  <ion-col align-self-center size-md="3" size-lg="5" size-xs="3">
+                    <div #dragable12 [id]="testImages[11].src" *ngIf='testImages[11].display' class="example-box" cdkDragBoundary=".example-boundary" cdkDrag (cdkDragReleased)=released($event) [ngStyle]="setDragableStyles()" style="z-index: 988;">
+                        <img [src]="testImages[11].src" /> 
+                    </div>
+                  </ion-col>
+              </ion-row>
+      </ion-grid>
+</ion-content>

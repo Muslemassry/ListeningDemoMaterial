@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>  
+    <ion-title>childAssignTest</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <form class="example-form">
+        <ion-grid>
+            <ion-row color="primary" justify-content-center>
+              <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+                  <div text-center>
+                  <h3>
+                    <mat-label>Assign Children To Test!</mat-label>
+                  </h3>
+                  </div>
+                    <div >
+                      <mat-form-field class="full-width-field">
+                        <input type="text" placeholder="Pick one" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto" [(ngModel)]="childName">
+                        <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+                          <mat-option *ngFor="let available of filteredOptions | async" [value]="available.studentName">
+                            {{available.studentName}}
+                          </mat-option>
+                        </mat-autocomplete>
+                      </mat-form-field>
+                  </div>
+                  <div padding>
+                    <button color='primary' class="full-width-field" mat-stroked-button (click)="addToUnassignedObj()" expand="block">
+                      <ion-icon name="add" slot="start"></ion-icon>
+                      Add
+                    </button>
+                  </div>
+                  <div>
+                    <div class="full-width-field">
+                      <h2>Unassigned</h2>
+                      <div
+                        cdkDropList
+                        #notAssignedObjList="cdkDropList"
+                        [cdkDropListData]="notAssignedObj"
+                        [cdkDropListConnectedTo]="[assignedObjList]"
+                        class="example-list"
+                        (cdkDropListDropped)="drop($event)">
+                        <div class="example-box" *ngFor="let item of notAssignedObj" cdkDrag>{{item.studentName}}</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div padding>
+                    <button color='primary' class="full-width-field" mat-stroked-button (click)="saveAssignedObj()" expand="block">Save</button>
+                  </div>
+              </ion-col>
+            </ion-row>
+        </ion-grid>
+      </form>
+        
+</ion-content>

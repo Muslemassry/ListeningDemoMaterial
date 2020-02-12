@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>  
+    <ion-title>Test Results</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <form class="example-form">
+        <ion-grid>
+            <ion-row color="primary" justify-content-center>
+              <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+                <div>
+                  <div class="full-width-field">
+                    <h2>Results</h2>
+                    {{studentEmail}} - {{testName}}
+                    <div
+                      cdkDropList
+                      [cdkDropListData]="testResults"
+                      class="example-list">
+                      <div class="example-box" *ngFor="let item of testResults" disabled='true' cdkDrag>{{item.stepName}} - {{item.passed}}</div>
+                    </div>
+                  </div>
+                </div>
+              </ion-col>
+            </ion-row>
+        </ion-grid>
+      </form>        
+</ion-content>

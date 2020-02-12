@@ -1,5 +1,7 @@
 {
   "name": "ListeningDemoMaterial",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
